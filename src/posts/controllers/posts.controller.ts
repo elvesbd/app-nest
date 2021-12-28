@@ -21,21 +21,21 @@ export class PostsController {
 
   @Get(':id')
   getPostById(@Param('id') id: string) {
-    return this.postsService.getAllPosts();
+    return this.postsService.getPostById(+id);
   }
 
   @Post()
   async createPost(@Body() post: CreatePostDto) {
-    return await this.postsService.createPost(post);
+    return this.postsService.createPost(post);
   }
 
   @Put(':id')
   async replacePost(@Param('id') id: string, @Body() post: UpdatePostDto) {
-    return await this.postsService.replacePost(+id, post);
+    return this.postsService.replacePost(+id, post);
   }
 
   @Delete(':id')
   async deletePost(@Param('id') id: string) {
-    return await this.postsService.deletePost(+id);
+    return this.postsService.deletePost(+id);
   }
 }
