@@ -13,19 +13,20 @@ export class PostsService {
 
   getPostById(id: number) {
     const post = this.posts.find((post) => post.id === id);
-    if (!post) {
-      throw new NotFoundException('Post not found');
+    if (post) {
+      return post;
     }
-    return post;
+    throw new NotFoundException('Post not found');
   }
 
   replacePost(id: number, post: UpdatePostDto) {
     const postIndex = this.posts.findIndex((post) => post.id === id);
-    if (!postIndex) {
-      throw new NotFoundException('Post not found');
+    if (postIndex > -1) {
+      this.posts[postIndex] = post;
+      return post;
     }
-    this.posts[postIndex] = post;
-    return post;
+
+    throw new NotFoundException('Post not found');
   }
 
   createPost(post: CreatePostDto) {
