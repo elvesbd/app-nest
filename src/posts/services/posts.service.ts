@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreatePostDto, UpdatePostDto } from '../infra/dto';
+import { IPost } from '../infra/interfaces';
 
 @Injectable()
 export class PostsService {
