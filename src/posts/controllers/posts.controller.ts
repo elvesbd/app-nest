@@ -14,7 +14,7 @@ import { PostsService } from '../services';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  /*  @Get()
+  @Get()
   getAllPosts() {
     return this.postsService.getAllPosts();
   }
@@ -30,12 +30,12 @@ export class PostsController {
   }
 
   @Put(':id')
-  async replacePost(@Param('id') id: string, @Body() post: UpdatePostDto) {
-    return this.postsService.replacePost(Number(id), post);
+  async updatePost(@Param('id') id: string, @Body() post: UpdatePostDto) {
+    return this.postsService.updatePost(Number(id), post);
   }
 
   @Delete(':id')
   async deletePost(@Param('id') id: string) {
     return this.postsService.deletePost(Number(id));
-  } */
+  }
 }
