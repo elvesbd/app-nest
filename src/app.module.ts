@@ -4,6 +4,7 @@ import { PostsModule } from './posts/posts.module';
 import { DatabaseModule } from './database/database.module';
 import { configValidationSchema } from './database';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UsersModule } from './users/users.module';
     PostsModule,
     DatabaseModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
