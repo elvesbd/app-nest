@@ -1,5 +1,1 @@
-export interface IPost {
-  id: number;
-  content: string;
-  title: string;
-}
+export * from './post.interface';
