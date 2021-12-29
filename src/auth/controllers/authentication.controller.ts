@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { LocalAuthenticationGuard } from '../guards';
 import { RegisterDto } from '../infra/dto';
-import { RequestWitUser } from '../infra/interfaces/request-user.interface';
+import { RequestWitUser } from '../infra/interfaces';
 import { AuthenticationService } from '../services';
 
 @Controller('authentication')
