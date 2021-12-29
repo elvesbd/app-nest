@@ -8,7 +8,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { LocalAuthenticationGuard } from '../guards';
+import { JwtAuthenticationGuard, LocalAuthenticationGuard } from '../guards';
 import { RegisterDto } from '../infra/dto';
 import { RequestWitUser } from '../infra/interfaces';
 import { AuthenticationService } from '../services';
@@ -31,5 +31,21 @@ export class AuthenticationController {
     response.setHeader('Set-Cookie', cookie);
     user.password = undefined;
     return response.send(user);
+  }
+
+  @UseGuards(JwtAuthenticationGuard)
+  @Post('logout')
+  async logout(@Req() request: RequestWitUser, @Res() response: Response) {
+    response.setHeader(
+      'Set-Cookie',
+      this.authenticationService.getCookieForLogOut(),
+    );
+    return response.sendStatus(200);
+  }
+
+  async authenticate(@Req() request: RequestWitUser) {
+    const user = request.user;
+    user.password = undefined;
+    return user;
   }
 }
