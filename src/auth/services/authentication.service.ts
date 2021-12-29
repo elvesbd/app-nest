@@ -46,4 +46,15 @@ export class AuthenticationService {
       throw new BadRequestException('Wrong credentials provided.');
     }
   }
+
+  async verifyPassword(plainTextPassword: string, hashedPassword: string) {
+    const isPasswordMatching = await bcrypt.compare(
+      plainTextPassword,
+      hashedPassword,
+    );
+
+    if (!isPasswordMatching) {
+      throw new BadRequestException('Wrong credentials provided.');
+    }
+  }
 }
