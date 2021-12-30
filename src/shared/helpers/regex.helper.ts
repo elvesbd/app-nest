@@ -4,10 +4,13 @@ const PASSWORD =
 const EMAIL =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const NAME = /^[a-záàâãéèêíïóôõöúçñ ]+$/;
+const NAME = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+
+const PHONE = /^\+[1-9]\d{1,14}$/;
 
 export const RegexHelper = {
   PASSWORD,
   EMAIL,
   NAME,
+  PHONE,
 };

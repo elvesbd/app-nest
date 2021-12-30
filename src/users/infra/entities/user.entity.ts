@@ -15,8 +15,11 @@ export class User {
   @Column()
   password: string;
 
-  /* @BeforeInsert()
+  @Column()
+  phoneNumber: string;
+
+  @BeforeInsert()
   hashPassword() {
     this.password = hashSync(this.password, 10);
-  } */
+  }
 }

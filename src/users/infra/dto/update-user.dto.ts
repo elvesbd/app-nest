@@ -18,4 +18,7 @@ export class UpdateUserDto {
   })
   @IsNotEmpty()
   password: string;
+
+  @IsNotEmpty()
+  phoneNumber: string;
 }
