@@ -27,7 +27,6 @@ export class AuthenticationService {
         ...registrationData,
         //password: hashedPassword,
       });
-      createdUser.password = undefined;
       return createdUser;
     } catch (e) {
       if (e?.code === PostgresErrorCode.UniqueViolation) {
@@ -48,7 +47,6 @@ export class AuthenticationService {
       if (!isPasswordMatching) {
         throw new BadRequestException('Wrong credentials provided.');
       }
-      user.password = undefined;
       return user;
     } catch (e) {
       throw new BadRequestException('Wrong credentials provided.');
