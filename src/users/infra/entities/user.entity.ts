@@ -1,6 +1,14 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { hashSync } from 'bcrypt';
-import { Exclude, Expose } from 'class-transformer';
+import { Expose } from 'class-transformer';
+import { Address } from '.';
 
 @Entity()
 export class User {
@@ -15,13 +23,17 @@ export class User {
   @Column()
   name: string;
 
-  @Exclude()
   @Column()
   password: string;
 
   @Expose()
   @Column()
   phoneNumber: string;
+
+  @Expose()
+  @OneToOne(() => Address, { eager: true, cascade: true })
+  @JoinColumn()
+  address: Address;
 
   @BeforeInsert()
   hashPassword() {

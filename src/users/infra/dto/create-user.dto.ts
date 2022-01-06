@@ -1,6 +1,13 @@
-import { IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsObject,
+  IsString,
+  Matches,
+  MinLength,
+} from 'class-validator';
 import { MessagesHelper } from 'src/shared/helpers';
 import { RegexHelper } from 'src/shared/helpers/regex.helper';
+import { Address } from '../entities';
 
 export class CreateUserDto {
   @Matches(RegexHelper.EMAIL, { message: MessagesHelper.EMAIL_VALID })
@@ -26,4 +33,8 @@ export class CreateUserDto {
     message: MessagesHelper.PHONE_VALID,
   })
   phoneNumber: string;
+
+  @IsObject()
+  @IsNotEmpty()
+  address: Address;
 }

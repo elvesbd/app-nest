@@ -1,8 +1,17 @@
-import { Body, Controller, Get, Logger, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Logger,
+  Param,
+  Post,
+  SerializeOptions,
+} from '@nestjs/common';
 import { CreateUserDto } from '../infra/dto';
 import { IUser } from '../infra/interfaces';
 import { UsersService } from '../services';
 
+@SerializeOptions({ strategy: 'excludeAll' })
 @Controller('users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
