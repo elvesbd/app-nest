@@ -1,8 +1,18 @@
-import { IsNotEmpty, IsString, Matches } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Matches,
+} from 'class-validator';
 import { MessagesHelper } from 'src/shared/helpers';
 import { RegexHelper } from 'src/shared/helpers/regex.helper';
 
 export class UpdateUserDto {
+  @IsNumber()
+  @IsOptional()
+  id: number;
+
   @Matches(RegexHelper.EMAIL, { message: MessagesHelper.EMAIL_VALID })
   @IsString()
   @IsNotEmpty()
