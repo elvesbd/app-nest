@@ -3,12 +3,14 @@ import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
 import { Expose } from 'class-transformer';
 import { Address } from '.';
+import { Post } from 'src/posts/infra/entities';
 
 @Entity()
 export class User {
@@ -34,6 +36,10 @@ export class User {
   @OneToOne(() => Address, { eager: true, cascade: true })
   @JoinColumn()
   address: Address;
+
+  @Expose()
+  @OneToMany(() => Post, (post: Post) => post.author)
+  posts: Post[];
 
   @BeforeInsert()
   hashPassword() {

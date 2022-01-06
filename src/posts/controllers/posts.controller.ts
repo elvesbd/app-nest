@@ -6,12 +6,16 @@ import {
   Param,
   Post,
   Put,
+  Req,
+  SerializeOptions,
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthenticationGuard } from 'src/auth/guards';
+import { RequestWitUser } from 'src/auth/infra/interfaces';
 import { CreatePostDto, UpdatePostDto } from '../infra/dto';
 import { PostsService } from '../services';
 
+@SerializeOptions({ strategy: 'excludeAll' })
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
@@ -28,8 +32,8 @@ export class PostsController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Post()
-  async createPost(@Body() post: CreatePostDto) {
-    return this.postsService.createPost(post);
+  async createPost(@Body() post: CreatePostDto, @Req() req: RequestWitUser) {
+    return this.postsService.createPost(post, req.user);
   }
 
   @Put(':id')

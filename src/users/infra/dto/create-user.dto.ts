@@ -1,5 +1,6 @@
 import {
   IsNotEmpty,
+  IsNotEmptyObject,
   IsObject,
   IsString,
   Matches,
@@ -35,6 +36,7 @@ export class CreateUserDto {
   phoneNumber: string;
 
   @IsObject()
+  @IsNotEmptyObject()
   @IsNotEmpty()
   address: Address;
 }
