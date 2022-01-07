@@ -8,42 +8,40 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { Address } from '.';
 import { Post } from '../../../posts/infra/entities';
 
 @Entity()
 export class User {
-  @Expose()
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
-  @Expose()
   @Column({ unique: true })
-  email: string;
+  public email: string;
 
-  @Expose()
+  @Column({ nullable: true })
+  public phoneNumber?: string;
+
   @Column()
-  name: string;
+  public name: string;
 
-  @Column()
-  password: string;
+  @Column({ nullable: true })
+  @Exclude()
+  public password?: string;
 
-  @Expose()
-  @Column()
-  phoneNumber: string;
-
-  @Expose()
-  @OneToOne(() => Address, { eager: true, cascade: true })
+  @OneToOne(() => Address, {
+    eager: true,
+    cascade: true,
+  })
   @JoinColumn()
-  address: Address;
+  public address: Address;
 
-  @Expose()
   @OneToMany(() => Post, (post: Post) => post.author)
-  posts: Post[];
+  public posts?: Post[];
 
-  @BeforeInsert()
+  /* @BeforeInsert()
   hashPassword() {
     this.password = hashSync(this.password, 10);
-  }
+  } */
 }

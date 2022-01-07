@@ -7,7 +7,6 @@ import {
 } from '../exceptions';
 import { CreateUserDto } from '../infra/dto';
 import { User } from '../infra/entities';
-import { IUser } from '../infra/interfaces';
 
 @Injectable()
 export class UsersService {
@@ -20,7 +19,7 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  async getByEmail(email: string): Promise<IUser> {
+  async getByEmail(email: string) {
     const user = await this.usersRepository.findOne({ email });
     if (!user) {
       throw new UserWithEmailNotFoundException(email);
@@ -28,7 +27,7 @@ export class UsersService {
     return user;
   }
 
-  async getById(id: number): Promise<IUser> {
+  async getById(id: number) {
     const user = await this.usersRepository.findOne({ id });
     if (!user) {
       throw new UserNotFoundException(id);
@@ -36,7 +35,7 @@ export class UsersService {
     return user;
   }
 
-  async create(user: CreateUserDto): Promise<IUser> {
+  async create(user: CreateUserDto) {
     const newUser = this.usersRepository.create(user);
     await this.usersRepository.save(newUser);
     return newUser;

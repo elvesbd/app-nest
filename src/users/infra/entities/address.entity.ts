@@ -1,25 +1,20 @@
-import { Expose } from 'class-transformer';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from '.';
 
 @Entity()
 export class Address {
-  @Expose()
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
-  @Expose()
   @Column()
-  street: string;
+  public street: string;
 
-  @Expose()
   @Column()
-  city: string;
+  public city: string;
 
-  @Expose()
   @Column()
-  country: string;
+  public country: string;
 
   @OneToOne(() => User, (user: User) => user.address)
-  user: User;
+  public user?: User;
 }
