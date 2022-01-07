@@ -10,7 +10,7 @@ import {
 import { hashSync } from 'bcrypt';
 import { Expose } from 'class-transformer';
 import { Address } from '.';
-import { Post } from 'src/posts/infra/entities';
+import { Post } from '../../../posts/infra/entities';
 
 @Entity()
 export class User {

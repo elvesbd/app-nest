@@ -5,8 +5,8 @@ import {
   IsString,
   Matches,
 } from 'class-validator';
-import { MessagesHelper } from 'src/shared/helpers';
-import { RegexHelper } from 'src/shared/helpers/regex.helper';
+import { MessagesHelper } from '../../../shared/helpers';
+import { RegexHelper } from '../../../shared/helpers/regex.helper';
 
 export class UpdateUserDto {
   @IsNumber()

@@ -6,8 +6,8 @@ import {
   Matches,
   MinLength,
 } from 'class-validator';
-import { MessagesHelper } from 'src/shared/helpers';
-import { RegexHelper } from 'src/shared/helpers/regex.helper';
+import { MessagesHelper } from '../../../shared/helpers';
+import { RegexHelper } from '../../../shared/helpers/regex.helper';
 import { Address } from '../entities';
 
 export class CreateUserDto {

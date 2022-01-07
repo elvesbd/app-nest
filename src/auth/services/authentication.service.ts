@@ -3,13 +3,13 @@ import {
   Injectable,
   InternalServerErrorException,
 } from '@nestjs/common';
-import { UsersService } from 'src/users/services';
-import { PostgresErrorCode } from 'src/database';
+import { UsersService } from '../../users/services';
+import { PostgresErrorCode } from '../../database';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { TokenPayload } from '../infra/interfaces';
-import { CreateUserDto } from 'src/users/infra/dto';
+import { CreateUserDto } from '../../users/infra/dto';
 
 @Injectable()
 export class AuthenticationService {

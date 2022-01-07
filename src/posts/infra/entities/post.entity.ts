@@ -1,6 +1,6 @@
 import { Expose } from 'class-transformer';
-import { Category } from 'src/categories/infra/entities';
-import { User } from 'src/users/infra/entities';
+import { Category } from '../../../categories/infra/entities';
+import { User } from '../../../users/infra/entities';
 import {
   Column,
   Entity,

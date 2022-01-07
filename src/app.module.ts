@@ -12,6 +12,7 @@ import { CategoriesModule } from './categories/categories.module';
     ConfigModule.forRoot({
       envFilePath: [`.env.${process.env.STAGE}`],
       validationSchema: configValidationSchema,
+      isGlobal: true,
     }),
     PostsModule,
     DatabaseModule,
