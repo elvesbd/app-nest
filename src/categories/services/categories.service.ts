@@ -39,6 +39,7 @@ export class CategoriesService {
   async createCategory(category: CreateCategoryDto): Promise<ICategory> {
     const newCategory = this.categoryRepository.create(category);
     await this.categoryRepository.save(newCategory);
+    console.log(JSON.stringify(newCategory));
     return newCategory;
   }
 

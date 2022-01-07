@@ -24,15 +24,15 @@ export class Post {
   @Column()
   content: string;
 
-  @Column({ nullable: true })
-  category?: string;
+  @Column()
+  category: string;
 
   @Expose()
   @ManyToOne(() => User, (user: User) => user.posts)
   author: User;
 
   @Expose()
-  @ManyToMany(() => Category)
+  @ManyToMany(() => Category, (category: Category) => category.posts)
   @JoinTable()
   categories: Category[];
 }

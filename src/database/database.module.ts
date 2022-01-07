@@ -19,6 +19,7 @@ import { Address, User } from 'src/users/infra/entities';
         database: configService.get('DB_DATABASE'),
         entities: [Post, User, Address, Category],
         synchronize: true,
+        autoLoadEntities: true,
       }),
     }),
   ],

@@ -14,6 +14,7 @@ import { Post } from 'src/posts/infra/entities';
 
 @Entity()
 export class User {
+  @Expose()
   @PrimaryGeneratedColumn()
   id: number;
 

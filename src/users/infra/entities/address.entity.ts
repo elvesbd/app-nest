@@ -4,6 +4,7 @@ import { User } from '.';
 
 @Entity()
 export class Address {
+  @Expose()
   @PrimaryGeneratedColumn()
   id: number;
 

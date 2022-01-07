@@ -10,7 +10,6 @@ import {
 } from '@nestjs/common';
 import { JwtAuthenticationGuard } from 'src/auth/guards';
 import { CreateCategoryDto, UpdateCategoryDto } from '../infra/dto';
-import { ICategory } from '../infra/interfaces';
 import { CategoriesService } from '../services';
 
 @Controller('categories')
@@ -30,6 +29,7 @@ export class CategoriesController {
   @UseGuards(JwtAuthenticationGuard)
   @Post()
   async createCategory(category: CreateCategoryDto) {
+    console.log(category);
     return this.categoriesService.createCategory(category);
   }
 
