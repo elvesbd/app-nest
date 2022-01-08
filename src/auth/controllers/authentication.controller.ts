@@ -1,27 +1,29 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Get,
   HttpCode,
   Post,
   Req,
   Res,
-  SerializeOptions,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { CreateUserDto } from 'src/users/infra/dto';
 import { JwtAuthenticationGuard, LocalAuthenticationGuard } from '../guards';
+import { RegisterDto } from '../infra/dto';
 import { RequestWitUser } from '../infra/interfaces';
 import { AuthenticationService } from '../services';
 
 @Controller('authentication')
-@SerializeOptions({ strategy: 'excludeAll' })
+@UseInterceptors(ClassSerializerInterceptor)
 export class AuthenticationController {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
   @Post('register')
-  async register(@Body() registrationData: CreateUserDto) {
+  async register(@Body() registrationData: RegisterDto) {
+    console.log(registrationData);
     const user = await this.authenticationService.register(registrationData);
     return user;
   }

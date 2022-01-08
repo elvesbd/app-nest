@@ -17,6 +17,7 @@ describe('The AuthenticationService', () => {
   let bcryptCompare: jest.Mock;
   let userData: User;
   let findUser: jest.Mock;
+
   beforeEach(async () => {
     userData = {
       ...mockedUser,
@@ -60,6 +61,7 @@ describe('The AuthenticationService', () => {
       );
       expect(getByEmailSpy).toBeCalledTimes(1);
     });
+
     describe('and the provided password is not valid', () => {
       beforeEach(() => {
         bcryptCompare.mockReturnValue(false);
@@ -73,6 +75,7 @@ describe('The AuthenticationService', () => {
         ).rejects.toThrow();
       });
     });
+
     describe('and the provided password is valid', () => {
       beforeEach(() => {
         bcryptCompare.mockReturnValue(true);
@@ -89,6 +92,7 @@ describe('The AuthenticationService', () => {
           expect(user).toBe(userData);
         });
       });
+
       describe('and the user is not found in the database', () => {
         beforeEach(() => {
           findUser.mockResolvedValue(undefined);

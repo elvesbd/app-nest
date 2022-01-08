@@ -10,6 +10,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { TokenPayload } from '../infra/interfaces';
 import { CreateUserDto } from '../../users/infra/dto';
+import { RegisterDto } from '../infra/dto';
 
 @Injectable()
 export class AuthenticationService {
@@ -19,7 +20,7 @@ export class AuthenticationService {
     private readonly configService: ConfigService,
   ) {}
 
-  async register(registrationData: CreateUserDto) {
+  async register(registrationData: RegisterDto) {
     //const hashedPassword = await bcrypt.hash(registrationData.password, 10);
 
     try {

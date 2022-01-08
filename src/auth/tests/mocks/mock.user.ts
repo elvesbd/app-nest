@@ -4,7 +4,7 @@ export const mockedUser: User = {
   id: 1,
   email: 'user@email.com',
   name: 'John',
-  password: 'hash',
+  password: 'strongPassword',
   phoneNumber: '+48123123123',
   address: {
     id: 1,

@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, MinLength, Matches } from 'class-validator';
-import { MessagesHelper, RegexHelper } from 'src/shared/helpers';
+import { MessagesHelper, RegexHelper } from '../../../shared/helpers';
 
 export class RegisterDto {
   @Matches(RegexHelper.EMAIL, { message: MessagesHelper.EMAIL_VALID })

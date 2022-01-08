@@ -35,8 +35,8 @@ export class CreateUserDto {
   })
   phoneNumber: string;
 
-  @IsObject()
+  /* @IsObject()
   @IsNotEmptyObject()
   @IsNotEmpty()
-  address: Address;
+  address: Address; */
 }
